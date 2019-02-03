@@ -1,4 +1,8 @@
-# vue-color-game
+# Guess The Color
+## How well do you know RGB colors?
+
+## Play
+You can play the game [here](https://guess-the-color.geoffselby.tech)
 
 ## Project setup
 ```

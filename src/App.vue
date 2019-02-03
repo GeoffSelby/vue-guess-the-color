@@ -1,31 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="min-h-full flex justify-center items-center" :style="{ backgroundColor: winningColor }">
+    <githubCorner v-bind:is-dark-contrast="isDarkContrast"/>
+    <router-view
+      v-on:winnerWinnerChickenDinner="gameWasWon"
+      v-on:restartGame="restartGame"
+      v-bind:is-dark-contrast="isDarkContrast"
+    />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import githubCorner from './components/githubCorner.vue';
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  components: {
+    githubCorner,
+  },
+  data() {
+    return {
+      winningColor: '',
+    }
+  },
+  computed: {
+    isDarkContrast() {
+      const rgb = this.winningColor.replace(/[^\d,]/g, '').split(',');
+      const yiq = ((Number(rgb[0]) * 299) + (Number(rgb[1]) * 587) + (Number(rgb[2]) * 114)) / 1000;
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+      return yiq < 135;
+    }
+  },
+  methods: {
+    restartGame() {
+      this.winningColor = '';
+    },
+
+    gameWasWon(color) {
+      this.winningColor = color;
+    }
+  }
 }
-</style>
+</script>
+
