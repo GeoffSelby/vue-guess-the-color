@@ -1,6 +1,6 @@
 <template>
   <div class="fixed pin-t pin-r w-18 h-18">
-    <a href="https://github.com/GeoffSelby/guess-the-color">
+    <a href="https://github.com/GeoffSelby/vue-guess-the-color">
       <svg class="fill-current" :class="isDarkContrast ? 'text-white' : 'text-black'" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>GitHub</title>
         <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
